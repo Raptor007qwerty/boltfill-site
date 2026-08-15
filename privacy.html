@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Boltfill</title>
+    <meta
+      name="description"
+      content="Boltfill's privacy policy. Snippets and settings are stored locally on your device. No accounts, no servers, no analytics, and no networking code."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%234F46E5'/%3E%3Cpath d='M72.5 16 40 70.5h20.5L55.5 112 90 57.5H69.5L72.5 16z' fill='%23fff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #f8fafc;
+        --border: #e2e8f0;
+        --ink: #0f172a;
+        --muted: #475569;
+        --faint: #64748b;
+        --brand: #4f46e5;
+        --brand-ink: #4338ca;
+        --code-bg: #f1f5f9;
+        --ok-bg: #f0fdf4;
+        --ok-border: #bbf7d0;
+        --warn-bg: #fffbeb;
+        --warn-border: #fde68a;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b1120;
+          --surface: #111827;
+          --border: #1f2937;
+          --ink: #e5e7eb;
+          --muted: #9ca3af;
+          --faint: #6b7280;
+          --brand: #818cf8;
+          --brand-ink: #a5b4fc;
+          --code-bg: #111827;
+          --ok-bg: #0f1f17;
+          --ok-border: #14532d;
+          --warn-bg: #1c1917;
+          --warn-border: #57534e;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+      header { border-bottom: 1px solid var(--border); background: var(--bg); }
+      .bar {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; flex-wrap: wrap; padding: 16px 0;
+      }
+      .brand {
+        display: flex; align-items: center; gap: 9px;
+        font-weight: 700; font-size: 18px; color: var(--ink);
+        text-decoration: none; letter-spacing: -0.01em;
+      }
+      .brand svg { width: 26px; height: 26px; display: block; }
+      nav { display: flex; gap: 20px; flex-wrap: wrap; }
+      nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
+      nav a:hover, nav a:focus { color: var(--brand-ink); text-decoration: underline; }
+      nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+      main { padding: 40px 0 24px; }
+      h1 { font-size: 34px; letter-spacing: -0.022em; margin: 0 0 8px; font-weight: 750; }
+      .meta { color: var(--faint); font-size: 15px; margin: 0 0 26px; }
+      .meta span { display: block; }
+      h2 {
+        font-size: 21px; letter-spacing: -0.012em; font-weight: 700;
+        margin: 34px 0 12px; padding-top: 18px; border-top: 1px solid var(--border);
+      }
+      h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 26px; }
+      p { margin: 0 0 14px; }
+      p:last-child { margin-bottom: 0; }
+
+      ul { margin: 0 0 14px; padding-left: 22px; }
+      li { margin-bottom: 8px; }
+      li:last-child { margin-bottom: 0; }
+
+      .table-scroll { overflow-x: auto; margin: 0 0 16px; }
+      table {
+        border-collapse: collapse; width: 100%; font-size: 15.5px; min-width: 460px;
+      }
+      th, td {
+        text-align: left; vertical-align: top;
+        padding: 10px 13px; border: 1px solid var(--border);
+      }
+      th { background: var(--surface); font-weight: 650; }
+
+      .callout {
+        border: 1px solid var(--ok-border); background: var(--ok-bg);
+        border-radius: 10px; padding: 16px 18px; margin: 0 0 22px;
+      }
+      .callout.warn { border-color: var(--warn-border); background: var(--warn-bg); }
+      .callout p { font-size: 16px; }
+
+      code {
+        background: var(--code-bg); border-radius: 4px;
+        padding: 1px 5px; font-size: 0.9em;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      a { color: var(--brand-ink); }
+
+      footer {
+        border-top: 1px solid var(--border); margin-top: 34px;
+        padding: 22px 0 34px; color: var(--faint); font-size: 14px;
+      }
+      .foot { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+      footer a { color: var(--faint); }
+
+      @media (max-width: 560px) {
+        body { font-size: 16px; }
+        main { padding: 28px 0 20px; }
+        h1 { font-size: 28px; }
+        h2 { font-size: 19px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <svg viewBox="0 0 128 128" role="img" aria-label="Boltfill">
+            <rect width="128" height="128" rx="28" fill="#4F46E5" />
+            <path d="M72.5 16 40 70.5h20.5L55.5 112 90 57.5H69.5L72.5 16z" fill="#fff" />
+          </svg>
+          Boltfill
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <h1>Privacy Policy</h1>
+      <p class="meta">
+        <span>Last updated: 15 August 2026</span>
+        <span>Applies to: Boltfill browser extension, version 0.2.0</span>
+      </p>
+
+      <div class="callout">
+        <p>
+          <strong>The short version.</strong> Boltfill stores your snippets on your own device
+          and nowhere else. It has no servers, no accounts and no analytics, and it contains no
+          code that sends data anywhere. It reads and changes web pages only on sites you have
+          allowed, and only to insert the text you asked it to insert.
+        </p>
+      </div>
+
+      <h2>What Boltfill stores, and where</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Where it is stored</th>
+              <th>Who can see it</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Your shortcuts and their content</td>
+              <td><code>chrome.storage.local</code> on this device</td>
+              <td>You, and anything else with access to your Chrome profile</td>
+            </tr>
+            <tr>
+              <td>Your settings (on/off, expansion mode, excluded sites)</td>
+              <td><code>chrome.storage.local</code> on this device</td>
+              <td>Same</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>That is the complete list. Boltfill stores nothing else.</p>
+      <p>
+        <code>chrome.storage.local</code> is Chrome's per-device extension storage. It is
+        <strong>not</strong> synced to your Google account, so your snippets do not travel
+        between machines unless you export them yourself.
+      </p>
+
+      <h2>What Boltfill sends over the network</h2>
+      <p>
+        Nothing. Boltfill contains no networking code of any kind: no <code>fetch</code>, no
+        <code>XMLHttpRequest</code>, no WebSocket, no tracking pixel, no remote fonts or
+        stylesheets. Every file it uses is inside the extension package.
+      </p>
+      <p>Because of this, Boltfill works with no internet connection at all.</p>
+
+      <h2>What Boltfill can access on web pages</h2>
+      <p>
+        To insert text into a field, Boltfill needs to run on the page containing that field.
+        This is a real capability and we will not pretend otherwise:
+      </p>
+      <ul>
+        <li>
+          Boltfill <strong>does not</strong> request access to any website when you install it.
+          A fresh install can read and change nothing.
+        </li>
+        <li>
+          Access is requested only when you click <strong>Enable</strong>, and Chrome shows you
+          exactly what you are granting.
+        </li>
+        <li>
+          Once granted, Boltfill's code runs on pages you visit. It watches for typing in text
+          fields so it can recognise a shortcut, and reads up to 52 characters immediately
+          before your cursor to check for one.
+        </li>
+        <li>
+          That text is examined in memory on your device and is never stored, transmitted, or
+          logged.
+        </li>
+        <li>
+          Boltfill does not read page content generally, does not track which sites you visit,
+          and does not record what you type.
+        </li>
+        <li>
+          You can remove access at any time from Boltfill's settings page or from
+          <code>chrome://extensions</code>, and you can exclude individual sites so Boltfill
+          never runs on them at all.
+        </li>
+      </ul>
+
+      <h2>Where Boltfill refuses to work</h2>
+      <p>Boltfill will not expand text inside:</p>
+      <ul>
+        <li>password fields</li>
+        <li>credit- and debit-card number, expiry and CVV fields</li>
+        <li>one-time-code and verification-code fields</li>
+        <li>fields whose name or label suggests a password, PIN, token, secret or bank account number</li>
+        <li>fields marked <code>disabled</code> or <code>readonly</code></li>
+        <li>any site you have added to your exclusion list</li>
+        <li>any element inside a region marked <code>data-boltfill="off"</code></li>
+      </ul>
+
+      <h2>Boltfill is not a password manager</h2>
+      <div class="callout warn">
+        <p>
+          Please do not store passwords, card numbers, CVV codes, one-time codes, private keys,
+          recovery phrases or banking credentials in Boltfill. Its storage is not encrypted
+          beyond the protections Chrome applies to your profile, and it is not designed to be a
+          secrets vault. Use a real password manager for those.
+        </p>
+      </div>
+
+      <h2>Accounts, payments and third parties</h2>
+      <p>
+        Boltfill has no user accounts and no sign-in. It does not use Supabase, Firebase,
+        Google Analytics, or any other third-party service. No payment processor receives any
+        information because Boltfill currently takes no payments.
+      </p>
+      <p>
+        If any of this changes in a future version, this policy will be updated before that
+        version ships, and the change will be described in the project's changelog.
+      </p>
+
+      <h2>Analytics</h2>
+      <p>
+        Boltfill collects no analytics, no telemetry, no crash reports and no usage statistics.
+      </p>
+      <p>
+        This website collects nothing either. It is static HTML and CSS, with no cookies, no
+        trackers, no analytics, no JavaScript and no third-party resources of any kind.
+      </p>
+
+      <h2>Your controls</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>You want to</th>
+              <th>Do this</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>See everything Boltfill has stored</td>
+              <td>Open Settings &rarr; Backup &rarr; Export Boltfills</td>
+            </tr>
+            <tr>
+              <td>Stop Boltfill without deleting anything</td>
+              <td>Open Settings &rarr; turn off "Boltfill is on"</td>
+            </tr>
+            <tr>
+              <td>Keep Boltfill off a particular site</td>
+              <td>Open Settings &rarr; "Never run on these sites"</td>
+            </tr>
+            <tr>
+              <td>Take away website access</td>
+              <td>Open Settings &rarr; Website access &rarr; Remove access</td>
+            </tr>
+            <tr>
+              <td>Delete everything</td>
+              <td>Open Settings &rarr; "Delete everything", type DELETE</td>
+            </tr>
+            <tr>
+              <td>Delete everything including the extension</td>
+              <td>
+                Uninstall Boltfill from <code>chrome://extensions</code>; Chrome deletes its
+                storage with it
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Deletion is immediate and permanent. There is no copy anywhere else to delete, because
+        no copy is ever made.
+      </p>
+
+      <h2>Children</h2>
+      <p>
+        Boltfill is not directed at children and collects no personal information from anyone.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        Material changes will be noted in the project's changelog and reflected here with a new
+        "Last updated" date before the version that makes the change is published.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        For privacy questions, support, or feedback, contact:
+        <a href="mailto:plugins.dns@gmail.com">plugins.dns@gmail.com</a>
+      </p>
+      <p>
+        For anything that is not private, the <a href="support.html">support page</a> explains
+        how to open an issue.
+      </p>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <span>Boltfill — Type it once. Use it everywhere.</span>
+        <span>
+          <a href="index.html">Home</a> &middot;
+          <a href="support.html">Support</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

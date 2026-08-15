@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boltfill — Type it once. Use it everywhere.</title>
+    <meta
+      name="description"
+      content="Boltfill is a local-first Chrome extension for text you type repeatedly. Save it once, expand it with a shortcut. No accounts, no servers, no analytics."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%234F46E5'/%3E%3Cpath d='M72.5 16 40 70.5h20.5L55.5 112 90 57.5H69.5L72.5 16z' fill='%23fff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #f8fafc;
+        --border: #e2e8f0;
+        --ink: #0f172a;
+        --muted: #475569;
+        --faint: #64748b;
+        --brand: #4f46e5;
+        --brand-ink: #4338ca;
+        --code-bg: #f1f5f9;
+        --ok-bg: #f0fdf4;
+        --ok-border: #bbf7d0;
+        --note-bg: #fffbeb;
+        --note-border: #fde68a;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b1120;
+          --surface: #111827;
+          --border: #1f2937;
+          --ink: #e5e7eb;
+          --muted: #9ca3af;
+          --faint: #6b7280;
+          --brand: #818cf8;
+          --brand-ink: #a5b4fc;
+          --code-bg: #111827;
+          --ok-bg: #0f1f17;
+          --ok-border: #14532d;
+          --note-bg: #1c1917;
+          --note-border: #57534e;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- header ---------- */
+      header {
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+      }
+      .bar {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; flex-wrap: wrap; padding: 16px 0;
+      }
+      .brand {
+        display: flex; align-items: center; gap: 9px;
+        font-weight: 700; font-size: 18px; color: var(--ink);
+        text-decoration: none; letter-spacing: -0.01em;
+      }
+      .brand svg { width: 26px; height: 26px; display: block; }
+      nav { display: flex; gap: 20px; flex-wrap: wrap; }
+      nav a {
+        color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500;
+      }
+      nav a:hover, nav a:focus { color: var(--brand-ink); text-decoration: underline; }
+      nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+      /* ---------- hero ---------- */
+      .hero { padding: 56px 0 40px; text-align: center; }
+      .hero h1 {
+        font-size: 42px; line-height: 1.15; margin: 0 0 10px;
+        letter-spacing: -0.025em; font-weight: 750;
+      }
+      .tagline {
+        font-size: 19px; font-weight: 650; color: var(--brand-ink); margin: 0 0 18px;
+      }
+      .lede { font-size: 18px; color: var(--muted); margin: 0 auto; max-width: 56ch; }
+
+      .demo {
+        display: flex; align-items: center; justify-content: center;
+        gap: 12px; flex-wrap: wrap; margin: 30px 0 0;
+      }
+      .pill {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 8px; padding: 7px 13px; font-size: 15px; color: var(--ink);
+      }
+      .pill.code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        color: var(--brand-ink); font-weight: 600;
+      }
+      .arrow { color: var(--faint); }
+
+      /* ---------- sections ---------- */
+      main { padding: 8px 0 24px; }
+      section { padding: 30px 0; border-top: 1px solid var(--border); }
+      section:first-of-type { border-top: 0; }
+      h2 {
+        font-size: 24px; letter-spacing: -0.015em; margin: 0 0 14px; font-weight: 700;
+      }
+      h3 { font-size: 17px; margin: 0 0 5px; font-weight: 650; }
+      p { margin: 0 0 14px; }
+      p:last-child { margin-bottom: 0; }
+
+      ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
+      ol.steps li {
+        counter-increment: step; position: relative;
+        padding: 0 0 18px 44px;
+      }
+      ol.steps li:last-child { padding-bottom: 0; }
+      ol.steps li::before {
+        content: counter(step);
+        position: absolute; left: 0; top: 1px;
+        width: 28px; height: 28px; border-radius: 50%;
+        background: var(--brand); color: #fff;
+        font-size: 14px; font-weight: 700;
+        display: flex; align-items: center; justify-content: center;
+      }
+      ol.steps p { color: var(--muted); margin: 0; font-size: 16px; }
+
+      .grid {
+        display: grid; gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+      }
+      .card {
+        background: var(--surface); border: 1px solid var(--border);
+        border-radius: 10px; padding: 16px 18px;
+      }
+      .card p { color: var(--muted); font-size: 15px; margin: 0; }
+
+      ul.facts { margin: 0; padding-left: 22px; }
+      ul.facts li { margin-bottom: 9px; color: var(--muted); }
+      ul.facts li:last-child { margin-bottom: 0; }
+      ul.facts strong { color: var(--ink); }
+
+      .callout {
+        border: 1px solid var(--ok-border); background: var(--ok-bg);
+        border-radius: 10px; padding: 16px 18px;
+      }
+      .callout.note { border-color: var(--note-border); background: var(--note-bg); }
+      .callout p { font-size: 16px; }
+
+      code {
+        background: var(--code-bg); border-radius: 4px;
+        padding: 1px 5px; font-size: 0.9em;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      a { color: var(--brand-ink); }
+
+      /* ---------- footer ---------- */
+      footer {
+        border-top: 1px solid var(--border); margin-top: 26px;
+        padding: 22px 0 34px; color: var(--faint); font-size: 14px;
+      }
+      .foot { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+      footer a { color: var(--faint); }
+
+      @media (max-width: 560px) {
+        body { font-size: 16px; }
+        .hero { padding: 40px 0 30px; }
+        .hero h1 { font-size: 33px; }
+        .tagline { font-size: 17px; }
+        .lede { font-size: 17px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <svg viewBox="0 0 128 128" role="img" aria-label="Boltfill">
+            <rect width="128" height="128" rx="28" fill="#4F46E5" />
+            <path d="M72.5 16 40 70.5h20.5L55.5 112 90 57.5H69.5L72.5 16z" fill="#fff" />
+          </svg>
+          Boltfill
+        </a>
+        <nav>
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="support.html">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="hero">
+        <h1>Boltfill</h1>
+        <p class="tagline">Type it once. Use it everywhere.</p>
+        <p class="lede">
+          A Chrome extension for the text you type over and over. Save it once, give it a
+          shortcut, and expand it in a text box on any site you have allowed.
+        </p>
+        <div class="demo">
+          <span class="pill code">/email</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="pill">john@example.com</span>
+        </div>
+      </div>
+
+      <section>
+        <div class="callout note">
+          <p>
+            <strong>Boltfill is not published yet.</strong> It is a pre-launch release
+            candidate (version 0.2.0) and is not available on the Chrome Web Store. This site
+            exists so the privacy policy and support details are publicly readable before
+            submission. There is nothing to install from here yet.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>
+            <h3>Save a shortcut</h3>
+            <p>Open Boltfill and pair a shortcut such as <code>/email</code> with the text it stands for.</p>
+          </li>
+          <li>
+            <h3>Allow the websites you want</h3>
+            <p>Boltfill asks for no website access when you install it. You grant it explicitly, and you can take it back at any time.</p>
+          </li>
+          <li>
+            <h3>Type the shortcut</h3>
+            <p>In a text box on an allowed site, typing <code>/email</code> becomes your saved text.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>What it does</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Ordinary fields and rich editors</h3>
+            <p>Works in form fields, textareas and rich text editors. Line breaks, emoji and non-English text survive intact.</p>
+          </div>
+          <div class="card">
+            <h3>Instant or deliberate</h3>
+            <p>Expands the moment a shortcut is complete, or waits for a space if you prefer. A shortcut that starts a longer one waits automatically.</p>
+          </div>
+          <div class="card">
+            <h3>Search and organise</h3>
+            <p>Search matches both the shortcut and the text inside it. Deleting offers an undo rather than a confirmation dialog.</p>
+          </div>
+          <div class="card">
+            <h3>Per-site exclusions</h3>
+            <p>Name a site and Boltfill will never run there, subdomains included.</p>
+          </div>
+          <div class="card">
+            <h3>Backup you control</h3>
+            <p>Export everything to a plain JSON file on your computer, and import it back. Nothing is uploaded.</p>
+          </div>
+          <div class="card">
+            <h3>Light and dark</h3>
+            <p>Follows your system theme, is keyboard navigable, and does no background work when idle.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Private by construction</h2>
+        <ul class="facts">
+          <li><strong>Your snippets stay on your device.</strong> They are held in Chrome's local extension storage and are never uploaded, because there is nowhere to upload them to.</li>
+          <li><strong>No networking code at all.</strong> No <code>fetch</code>, no <code>XMLHttpRequest</code>, no WebSocket, no tracking pixel, no remote fonts or stylesheets. Boltfill works with no internet connection.</li>
+          <li><strong>No accounts, no servers, no analytics.</strong> There is no sign-in and no telemetry of any kind.</li>
+          <li><strong>No website access at install.</strong> A fresh install can read and change nothing until you grant access.</li>
+          <li><strong>It refuses sensitive fields.</strong> Boltfill never expands inside password, card number, CVV, one-time-code or similar fields.</li>
+        </ul>
+        <p style="margin-top: 16px">
+          The full detail is in the <a href="privacy.html">privacy policy</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Boltfill is not a password manager</h2>
+        <p>
+          Please do not store passwords, card numbers, CVV codes, one-time codes, private keys,
+          recovery phrases or banking credentials in Boltfill. Its storage is not encrypted
+          beyond the protection Chrome gives your profile, and it is not designed to be a
+          secrets vault. Use a real password manager for those.
+        </p>
+      </section>
+
+      <section>
+        <h2>Questions or problems?</h2>
+        <p>
+          Bug reports and questions are welcome on the
+          <a href="support.html">support page</a>, or by email to
+          <a href="mailto:plugins.dns@gmail.com">plugins.dns@gmail.com</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <span>Boltfill — Type it once. Use it everywhere.</span>
+        <span>
+          <a href="privacy.html">Privacy</a> &middot;
+          <a href="support.html">Support</a> &middot;
+          <a href="mailto:plugins.dns@gmail.com">plugins.dns@gmail.com</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

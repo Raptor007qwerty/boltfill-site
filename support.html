@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Support — Boltfill</title>
+    <meta
+      name="description"
+      content="How to report a bug, ask a question, or report a security problem in Boltfill."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='28' fill='%234F46E5'/%3E%3Cpath d='M72.5 16 40 70.5h20.5L55.5 112 90 57.5H69.5L72.5 16z' fill='%23fff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --surface: #f8fafc;
+        --border: #e2e8f0;
+        --ink: #0f172a;
+        --muted: #475569;
+        --faint: #64748b;
+        --brand: #4f46e5;
+        --brand-ink: #4338ca;
+        --code-bg: #f1f5f9;
+        --warn-bg: #fffbeb;
+        --warn-border: #fde68a;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b1120;
+          --surface: #111827;
+          --border: #1f2937;
+          --ink: #e5e7eb;
+          --muted: #9ca3af;
+          --faint: #6b7280;
+          --brand: #818cf8;
+          --brand-ink: #a5b4fc;
+          --code-bg: #111827;
+          --warn-bg: #1c1917;
+          --warn-border: #57534e;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+      header { border-bottom: 1px solid var(--border); background: var(--bg); }
+      .bar {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; flex-wrap: wrap; padding: 16px 0;
+      }
+      .brand {
+        display: flex; align-items: center; gap: 9px;
+        font-weight: 700; font-size: 18px; color: var(--ink);
+        text-decoration: none; letter-spacing: -0.01em;
+      }
+      .brand svg { width: 26px; height: 26px; display: block; }
+      nav { display: flex; gap: 20px; flex-wrap: wrap; }
+      nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; }
+      nav a:hover, nav a:focus { color: var(--brand-ink); text-decoration: underline; }
+      nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+      main { padding: 40px 0 24px; }
+      h1 { font-size: 34px; letter-spacing: -0.022em; margin: 0 0 10px; font-weight: 750; }
+      .lede { color: var(--muted); font-size: 18px; margin: 0 0 30px; max-width: 58ch; }
+      h2 {
+        font-size: 21px; letter-spacing: -0.012em; font-weight: 700;
+        margin: 34px 0 12px; padding-top: 18px; border-top: 1px solid var(--border);
+      }
+      h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+      h3 { font-size: 17px; font-weight: 650; margin: 22px 0 5px; }
+      p { margin: 0 0 14px; }
+      p:last-child { margin-bottom: 0; }
+
+      ul, ol { margin: 0 0 14px; padding-left: 22px; }
+      li { margin-bottom: 8px; }
+      li:last-child { margin-bottom: 0; }
+
+      .btn-row { margin: 0 0 18px; }
+      .btn {
+        display: inline-block; background: var(--brand); color: #fff;
+        text-decoration: none; font-weight: 650; font-size: 16px;
+        padding: 11px 20px; border-radius: 8px;
+      }
+      .btn:hover, .btn:focus { background: var(--brand-ink); }
+      @media (prefers-color-scheme: dark) {
+        .btn { color: #0b1120; }
+      }
+
+      .callout {
+        border: 1px solid var(--warn-border); background: var(--warn-bg);
+        border-radius: 10px; padding: 16px 18px; margin: 0 0 20px;
+      }
+      .callout p { font-size: 16px; }
+
+      .faq {
+        border: 1px solid var(--border); background: var(--surface);
+        border-radius: 10px; padding: 16px 18px; margin: 0 0 12px;
+      }
+      .faq h3 { margin: 0 0 6px; }
+      .faq p { color: var(--muted); font-size: 16px; margin: 0; }
+
+      code {
+        background: var(--code-bg); border-radius: 4px;
+        padding: 1px 5px; font-size: 0.9em;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      a { color: var(--brand-ink); }
+      .break { word-break: break-word; }
+
+      footer {
+        border-top: 1px solid var(--border); margin-top: 34px;
+        padding: 22px 0 34px; color: var(--faint); font-size: 14px;
+      }
+      .foot { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+      footer a { color: var(--faint); }
+
+      @media (max-width: 560px) {
+        body { font-size: 16px; }
+        main { padding: 28px 0 20px; }
+        h1 { font-size: 28px; }
+        h2 { font-size: 19px; }
+        .lede { font-size: 17px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <a class="brand" href="index.html">
+          <svg viewBox="0 0 128 128" role="img" aria-label="Boltfill">
+            <rect width="128" height="128" rx="28" fill="#4F46E5" />
+            <path d="M72.5 16 40 70.5h20.5L55.5 112 90 57.5H69.5L72.5 16z" fill="#fff" />
+          </svg>
+          Boltfill
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="support.html" aria-current="page">Support</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <h1>Support</h1>
+      <p class="lede">
+        Found a bug, or something not behaving the way you expected? Please tell us — reports
+        are genuinely useful while Boltfill is still pre-launch.
+      </p>
+
+      <h2>Report a bug or ask a question</h2>
+      <p>
+        The best place is the issue tracker for this website's repository on GitHub. It is
+        public, so anyone can open an issue and follow the reply.
+      </p>
+      <p class="btn-row">
+        <a class="btn" href="https://github.com/Raptor007qwerty/boltfill-site/issues">Open an issue on GitHub</a>
+      </p>
+      <p>
+        Prefer email? Write to
+        <a class="break" href="mailto:plugins.dns@gmail.com">plugins.dns@gmail.com</a>.
+      </p>
+
+      <h3>What to include</h3>
+      <p>A report is much easier to act on when it says:</p>
+      <ol>
+        <li>What you did, step by step.</li>
+        <li>What you expected to happen.</li>
+        <li>What happened instead.</li>
+        <li>The website or kind of text box it happened in, if it was site-specific.</li>
+        <li>Your Chrome version, and the Boltfill version from the settings page.</li>
+      </ol>
+      <div class="callout">
+        <p>
+          <strong>Please do not paste snippet contents, passwords, card numbers or other
+          personal data into an issue.</strong> Issues are public. A short made-up example that
+          reproduces the same problem is just as useful.
+        </p>
+      </div>
+
+      <h2>Reporting a security problem</h2>
+      <p>
+        Please <strong>do not</strong> open a public issue for a security vulnerability. Email
+        <a class="break" href="mailto:plugins.dns@gmail.com">plugins.dns@gmail.com</a>
+        with "Boltfill security" in the subject, and include what you found, how to reproduce
+        it, and what an attacker could do with it.
+      </p>
+
+      <h2>Common questions</h2>
+
+      <div class="faq">
+        <h3>Where can I install Boltfill?</h3>
+        <p>
+          Not anywhere yet. Boltfill is a pre-launch release candidate and has not been
+          submitted to the Chrome Web Store. This page will be updated when that changes.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>Nothing expands when I type my shortcut.</h3>
+        <p>
+          Check three things: that Boltfill has been granted access to the site (open the
+          popup and click <strong>Enable</strong>), that it is not paused in Settings, and that
+          the site is not on your exclusion list. Boltfill also deliberately never expands in
+          password, card number, CVV or one-time-code fields.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>My shortcut only expands after I press space.</h3>
+        <p>
+          That happens when one shortcut is the beginning of another — with both
+          <code>/th</code> and <code>/thanks</code> saved, <code>/th</code> has to wait so that
+          <code>/thanks</code> stays typeable. A setting also switches everything to
+          wait-for-space if you prefer it that way.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>Are my snippets synced between computers?</h3>
+        <p>
+          No. They are stored locally on each device and are not synced to your Google account.
+          Use Settings &rarr; Backup to export them to a JSON file and import it elsewhere.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>How do I get my data out, or delete it?</h3>
+        <p>
+          Settings &rarr; Backup &rarr; Export writes a plain JSON file to your computer.
+          Settings &rarr; "Delete everything" removes all snippets and settings from the
+          device, and uninstalling the extension removes its storage with it.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>Which websites does it work on?</h3>
+        <p>
+          Boltfill works in ordinary form fields, textareas and rich text editors on sites you
+          have granted access to. Compatibility with specific named sites is still being tested
+          and is deliberately not claimed until it has been verified.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>Can I stop it running on one particular site?</h3>
+        <p>
+          Yes. Settings &rarr; "Never run on these sites" excludes a site and its subdomains
+          entirely. Site owners can also mark a region of a page with
+          <code>data-boltfill="off"</code>.
+        </p>
+      </div>
+
+      <h2>Privacy</h2>
+      <p>
+        Boltfill stores your snippets and settings locally on your device, sends nothing over
+        the network, and collects no analytics. The full detail is in the
+        <a href="privacy.html">privacy policy</a>.
+      </p>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <span>Boltfill — Type it once. Use it everywhere.</span>
+        <span>
+          <a href="index.html">Home</a> &middot;
+          <a href="privacy.html">Privacy</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
