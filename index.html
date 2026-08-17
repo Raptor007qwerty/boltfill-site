@@ -6,7 +6,7 @@
     <title>Boltfill — Type it once. Use it everywhere.</title>
     <meta
       name="description"
-      content="Boltfill is a local-first Chrome extension for text you type repeatedly. Save it once, expand it with a shortcut. No accounts, no servers, no analytics."
+      content="Boltfill is a local-first Chrome extension for text you type repeatedly. Save it once, expand it with a shortcut. Free forever, no account needed. Optional Pro adds sync, folders and history."
     />
     <link
       rel="icon"
@@ -215,9 +215,9 @@
         <div class="callout note">
           <p>
             <strong>Boltfill is not published yet.</strong> It is a pre-launch release
-            candidate (version 0.2.0) and is not available on the Chrome Web Store. This site
-            exists so the privacy policy and support details are publicly readable before
-            submission. There is nothing to install from here yet.
+            candidate and is not available on the Chrome Web Store. This site exists so the
+            privacy policy and support details are publicly readable before submission. There
+            is nothing to install &mdash; and nothing to buy &mdash; from here yet.
           </p>
         </div>
       </section>
@@ -270,12 +270,65 @@
         </div>
       </section>
 
+
+      <section id="pricing">
+        <h2>Pricing</h2>
+        <p>
+          Boltfill Free is a complete text expander, not a trial. It has no time limit, no
+          nag screens and no advertising, and it does not require an account. Pro exists
+          because syncing snippets between computers costs us money to run.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Free &mdash; $0</h3>
+            <ul class="facts" style="margin-top: 10px">
+              <li>Unlimited snippets on your own device</li>
+              <li>Works with no account at all</li>
+              <li>Optional cloud sync: 2 devices, 10&nbsp;MB</li>
+              <li>Import, export, site exclusions, sensitive-field protection</li>
+              <li>Everything on this page above</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Pro &mdash; $19.99 a year</h3>
+            <p style="margin: 0 0 10px">
+              or $2.49 a month. Annual is $9.89 cheaper over a year &mdash; $19.99 against
+              $29.88.
+            </p>
+            <ul class="facts" style="margin-top: 10px">
+              <li>10 synced devices instead of 2</li>
+              <li>100&nbsp;MB of cloud backup instead of 10&nbsp;MB</li>
+              <li>Folders and tags</li>
+              <li>30-day history, so an edit or a deletion can be undone</li>
+              <li>Dynamic variables such as <code>{{date}}</code> and <code>{{time}}</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout note" style="margin-top: 18px">
+          <p>
+            <strong>Cancelling never deletes anything.</strong> If you stop paying, your
+            snippets, folders and tags all stay exactly where they are and Boltfill keeps
+            working. If you are over the free limits, it stops accepting <em>new</em> cloud
+            data and <em>new</em> devices rather than removing what you already have. Your
+            local snippets are untouched either way.
+          </p>
+        </div>
+
+        <p style="margin-top: 16px">
+          Payment is handled by Lemon Squeezy, who are the merchant of record. Boltfill never
+          sees your card &mdash; it has no code that could accept one.
+        </p>
+      </section>
+
       <section>
         <h2>Private by construction</h2>
         <ul class="facts">
-          <li><strong>Your snippets stay on your device.</strong> They are held in Chrome's local extension storage and are never uploaded, because there is nowhere to upload them to.</li>
-          <li><strong>No networking code at all.</strong> No <code>fetch</code>, no <code>XMLHttpRequest</code>, no WebSocket, no tracking pixel, no remote fonts or stylesheets. Boltfill works with no internet connection.</li>
-          <li><strong>No accounts, no servers, no analytics.</strong> There is no sign-in and no telemetry of any kind.</li>
+          <li><strong>No account, and no network, unless you ask for one.</strong> Signed out, Boltfill makes no network requests whatsoever &mdash; your snippets sit in Chrome's local storage and go nowhere. That is the default and it is a complete product.</li>
+          <li><strong>Sync is a choice, not a condition.</strong> If you sign in, your snippets are also stored on Boltfill's server so your other computers can read them. They are encrypted in transit and at rest, but this is <em>not</em> end-to-end encryption &mdash; we could read them, and we would rather say so than imply otherwise.</li>
+          <li><strong>No analytics, no telemetry, no trackers.</strong> Not in either mode. Boltfill does not record which sites you visit, what you type, or how often you use it.</li>
+          <li><strong>Expansion never needs the internet.</strong> Shortcuts expand from your own device, so Boltfill works on a plane whether you have an account or not.</li>
           <li><strong>No website access at install.</strong> A fresh install can read and change nothing until you grant access.</li>
           <li><strong>It refuses sensitive fields.</strong> Boltfill never expands inside password, card number, CVV, one-time-code or similar fields.</li>
         </ul>

@@ -6,7 +6,7 @@
     <title>Privacy Policy — Boltfill</title>
     <meta
       name="description"
-      content="Boltfill's privacy policy. Snippets and settings are stored locally on your device. No accounts, no servers, no analytics, and no networking code."
+      content="Boltfill's privacy policy. Local mode stores snippets on your device and sends nothing. Optional sync and Pro are described in full, including what is not encrypted end to end."
     />
     <link
       rel="icon"
@@ -151,15 +151,18 @@
       <h1>Privacy Policy</h1>
       <p class="meta">
         <span>Last updated: 15 August 2026</span>
-        <span>Applies to: Boltfill browser extension, version 0.2.0</span>
+        <span>Applies to: Boltfill browser extension, version 0.4.0</span>
       </p>
 
       <div class="callout">
         <p>
-          <strong>The short version.</strong> Boltfill stores your snippets on your own device
-          and nowhere else. It has no servers, no accounts and no analytics, and it contains no
-          code that sends data anywhere. It reads and changes web pages only on sites you have
-          allowed, and only to insert the text you asked it to insert.
+          <strong>The short version.</strong> Boltfill has two modes and you choose which.
+          <strong>Local mode</strong> is the default, needs no account, and sends nothing
+          anywhere &mdash; your snippets stay on your own device. <strong>Sync mode</strong>
+          starts only if you deliberately sign in, and stores your snippets on Boltfill's
+          server so your other computers can read them. In both modes Boltfill reads and
+          changes web pages only on sites you have allowed, and only to insert the text you
+          asked it to insert. There are no analytics in either mode.
         </p>
       </div>
 
@@ -260,13 +263,58 @@
 
       <h2>Accounts, payments and third parties</h2>
       <p>
-        Boltfill has no user accounts and no sign-in. It does not use Supabase, Firebase,
-        Google Analytics, or any other third-party service. No payment processor receives any
-        information because Boltfill currently takes no payments.
+        Signing in is optional. If you never do, Boltfill uses no third-party service of any
+        kind and this section does not apply to you.
+      </p>
+      <p>If you do sign in, two third parties are involved and no others:</p>
+      <ul class="facts">
+        <li>
+          <strong>Google</strong>, only during sign-in, to confirm who you are. Boltfill asks
+          for the smallest possible scopes &mdash; your email address and basic profile &mdash;
+          and cannot read your Gmail, Drive, contacts or calendar.
+        </li>
+        <li>
+          <strong>Supabase</strong>, which hosts Boltfill's database and handles
+          authentication. Your snippets and email address are stored there.
+        </li>
+      </ul>
+      <p>
+        If you buy Boltfill Pro, one more is involved:
+        <strong>Lemon Squeezy</strong>, who are the merchant of record for every Boltfill sale.
+        They take the payment, handle the tax, and tell Boltfill's server that your
+        subscription started, renewed or ended. <strong>Boltfill never sees your card</strong>
+        &mdash; it has no code that could accept a card number. We store only a customer
+        reference, a subscription reference, its status and the relevant dates. Lemon Squeezy's
+        own policy is at
+        <a href="https://www.lemonsqueezy.com/privacy">lemonsqueezy.com/privacy</a>.
       </p>
       <p>
-        If any of this changes in a future version, this policy will be updated before that
-        version ships, and the change will be described in the project's changelog.
+        Boltfill uses no analytics service, no advertising network and no crash reporter. It
+        does not sell your data, does not share it with anyone, and does not use it to train
+        anything.
+      </p>
+
+      <h2>Is my snippet content encrypted?</h2>
+      <p>
+        Your snippets travel over HTTPS and are stored encrypted at rest.
+        <strong>That is not end-to-end encryption, and we will not call it that.</strong>
+        Boltfill's operators hold the keys to the database, which means snippet content in a
+        synced account is technically readable by us. We do not read it and have no interest in
+        it, but you should judge the guarantee by what is technically true rather than by our
+        intentions.
+      </p>
+      <p>
+        If that matters to you, stay signed out &mdash; local mode sends nothing at all &mdash;
+        and please do not put anything sensitive in a synced snippet.
+      </p>
+
+      <h2>Cancelling Pro</h2>
+      <p>
+        Cancelling never deletes anything. Your snippets, folders and tags stay exactly where
+        they are. If you end up above the free limits, Boltfill stops accepting <em>new</em>
+        cloud data and <em>new</em> devices rather than removing what is already there, and
+        your local snippets are untouched regardless. A failed payment never deletes anything
+        either.
       </p>
 
       <h2>Analytics</h2>
