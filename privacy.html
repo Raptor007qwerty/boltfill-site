@@ -150,8 +150,8 @@
     <main class="wrap">
       <h1>Privacy Policy</h1>
       <p class="meta">
-        <span>Last updated: 15 August 2026</span>
-        <span>Applies to: Boltfill browser extension, version 0.4.0</span>
+        <span>Last updated: 19 August 2026</span>
+        <span>Applies to: Boltfill browser extension, version 0.2.0 and later</span>
       </p>
 
       <div class="callout">
@@ -194,16 +194,46 @@
       <p>
         <code>chrome.storage.local</code> is Chrome's per-device extension storage. It is
         <strong>not</strong> synced to your Google account, so your snippets do not travel
-        between machines unless you export them yourself.
+        between machines unless you export them yourself or turn on Boltfill's own sync by
+        signing in.
       </p>
 
       <h2>What Boltfill sends over the network</h2>
       <p>
-        Nothing. Boltfill contains no networking code of any kind: no <code>fetch</code>, no
-        <code>XMLHttpRequest</code>, no WebSocket, no tracking pixel, no remote fonts or
-        stylesheets. Every file it uses is inside the extension package.
+        <strong>Signed out, nothing at all.</strong> No request of any kind leaves your
+        computer: no tracking pixel, no analytics call, no remote font or stylesheet. Every
+        file Boltfill uses is inside the extension package, and expansion reads only your own
+        device's storage. This is the default, and it is the whole product for anyone who
+        never signs in.
       </p>
-      <p>Because of this, Boltfill works with no internet connection at all.</p>
+      <p>
+        <strong>Signed in, three things and nothing else.</strong> Accounts and sync arrive
+        with version 0.4.0, and stay off until you choose them:
+      </p>
+      <ul>
+        <li>
+          Your snippets &mdash; their shortcuts, their text, and any folders and tags &mdash;
+          to Boltfill's own server, so your other computers can read them.
+        </li>
+        <li>
+          Your email address and a random device id, so the account can be identified and its
+          devices counted. The device label is coarse &mdash; "Chrome on Windows" &mdash; and
+          is not derived from your machine.
+        </li>
+        <li>
+          If you buy Pro, a request to start a checkout. The payment itself happens on Lemon
+          Squeezy's own pages and Boltfill never sees a card.
+        </li>
+      </ul>
+      <p>
+        Those requests go to Boltfill's own Supabase project and to Lemon Squeezy, and
+        nowhere else. Exactly one file in the extension is permitted to make a network
+        request at all, and the release build fails if any other file tries.
+      </p>
+      <p>
+        <strong>Expansion never needs the internet in either mode.</strong> Shortcuts expand
+        from your own device, so Boltfill works on a plane whether you have an account or not.
+      </p>
 
       <h2>What Boltfill can access on web pages</h2>
       <p>
